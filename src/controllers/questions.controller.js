@@ -76,7 +76,7 @@ export const updateQuestion = async (req, res) => {
                 new: true
             }
         );
-        if(!updatedForm) return res.status(404).send({message: 'Formulario no encontrado'});
+        if(!updatedForm) return res.status(404).send({message: 'Pregunta no encontrado'});
 
         res.send(updatedForm);
     } catch (error) {
