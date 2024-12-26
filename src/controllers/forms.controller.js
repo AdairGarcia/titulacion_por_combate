@@ -14,16 +14,15 @@ export const getForms = async (req, res) => {
 
 export const getForm = async (req, res) => {
     const idForm = req.params.id_form;
-    console.log("idForm: ", idForm);
     try {
         const form = await Form.findById(idForm);
+        if(!form) return res.status(404).json({message: 'Formulario no encontrado'});
         res.send(form);
     } catch (error) {
         console.error('Hubo un error al obtener el formulario', error);
         res.status(500).json({message: 'Error al obtener el formulario: ' + error.message});
     }
 }
-
 
 export const createForm = async (req, res) => {
     const {title, color} = req.body;
