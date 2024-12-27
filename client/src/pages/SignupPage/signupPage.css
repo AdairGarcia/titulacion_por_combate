@@ -1,0 +1,43 @@
+.fondo-pantalla{
+    background-image: url("../../assets/FondoMapa.png");
+    background-size: max(100%, 100%);
+    background-repeat: repeat-y;
+
+}
+
+.contenedor-formulario{
+    background-color: #999999;
+}
+
+.label-formulario{
+    color: #000000;
+    font-family: Inter, sans-serif;
+    font-weight: bold;
+    font-size: 20px
+}
+
+.entrada-formulario{
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 2px solid #000000;
+}
+
+.entrada-formulario:focus{
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 2px solid #000000
+}
+
+.btn-registrarse{
+    background-color: #000000;
+    color: #FFA600;
+    font-family: Inter, sans-serif;
+    font-weight: bold;
+    font-size: 20px
+}
+
+.question{
+    color: #000000;
+    font-family: Inter, sans-serif;
+    font-size: 18px
+}

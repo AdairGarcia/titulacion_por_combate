@@ -11,3 +11,10 @@
 .map {
     max-width: 90%;
 }
+
+.btn-empezar {
+    background-color: #000000;
+    color: white;
+    font-family: Inter, sans-serif;
+    border-color: #FFA600;
+}
