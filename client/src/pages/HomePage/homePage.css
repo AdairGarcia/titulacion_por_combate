@@ -1,0 +1,13 @@
+.left-part{
+    background-color: #EFBC5E;
+    min-height: 100%;
+}
+
+.right-part{
+    background-color: #FFA600;
+    min-height: 100%;
+}
+
+.map {
+    max-width: 90%;
+}

@@ -12,6 +12,7 @@ export const SessionButtons = () => {
                         <img
                             alt={"register"}
                             src={register}
+                            className={"icons"}
                         />
                     </div>
                     <div className={"col align-content-center"}>
@@ -27,6 +28,7 @@ export const SessionButtons = () => {
                         <img
                             alt={"login"}
                             src={login}
+                            className={"icons"}
                         />
                     </div>
                     <div className={"col align-content-center"}>
