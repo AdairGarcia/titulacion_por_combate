@@ -1,17 +1,17 @@
-import './signupPage.css';
-import { MdEmail } from 'react-icons/md';
-import { FaLock } from "react-icons/fa";
-import registrarse from '../../assets/Registrarse.png';
+import './signinPage.css'
+import iniciarSesion from '../../assets/Iniciar sesión.png';
+import {MdEmail} from "react-icons/md";
+import {FaLock} from "react-icons/fa";
 
-export const SignupPage = () => {
+export const SigninPage = () => {
     return(
         <>
-            <div className={"fondo-pantalla vh-100 d-grid justify-content-center align-items-center rounded-5"}>
-                <div className={"contenedor-formulario container p-5"}>
+            <div className={"fondo-pantalla vh-100 d-grid justify-content-center align-items-center"}>
+                <div className={"contenedor-formulario container p-5 rounded-5"}>
                     <div className={"text-center"}>
                         <img
                             alt={"Titulo"}
-                            src={registrarse}
+                            src={iniciarSesion}
                             className={"img-fluid m-5"}
                         />
                     </div>
@@ -46,13 +46,13 @@ export const SignupPage = () => {
                             <div className={"row text-center my-5 align-items-center"}>
                                 <div className={"col"}>
                                     <p className="question">
-                                        ¿Ya tienes una cuenta?
+                                        ¿No tienes una cuenta?
                                         <a href={""}> Ingresa aquí</a>
                                     </p>
                                 </div>
                                 <div className={"col"}>
                                     <button type={"submit"} className={"btn btn-registrarse rounded-3 px-4"}>
-                                        Registrarse
+                                        Iniciar Sesión
                                     </button>
                                 </div>
                             </div>
@@ -63,4 +63,4 @@ export const SignupPage = () => {
             </div>
         </>
     )
-};
+}
