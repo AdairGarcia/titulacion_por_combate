@@ -1,9 +1,10 @@
 import {Header} from "../../components/Header/Header.jsx";
+import {SessionButtons} from "../../components/SessionButtons/SessionButtons.jsx";
 
 function HomePage() {
     return(
         <>
-            <Header/>
+            <Header optionalComponent={ <SessionButtons/> }/>
         </>
     )
 }

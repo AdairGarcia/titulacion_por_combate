@@ -2,7 +2,7 @@ import './header.css'
 
 import titulo from '../../assets/Titulo.png';
 
-export const Header = () => {
+export const Header = ({optionalComponent}) => {
     return (
         <nav className={"navbar mx-auto headerColor"}>
             <div className={"container-fluid row"}>
@@ -16,7 +16,7 @@ export const Header = () => {
                     </a>
                 </div>
                 <div className={"col"}>
-
+                    {optionalComponent}
                 </div>
             </div>
         </nav>
