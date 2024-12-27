@@ -1,8 +1,16 @@
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage.jsx";
+
 function App() {
     return(
-        <div className="container">
-            <button className="btn btn-primary">boton</button>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                {/*Public routes*/}
+                <Route path='/' element={<HomePage/>}/>
+
+            </Routes>
+        </BrowserRouter>
+
     )
 }
 
