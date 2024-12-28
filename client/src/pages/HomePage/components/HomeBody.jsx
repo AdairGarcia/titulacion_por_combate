@@ -7,7 +7,7 @@ export const HomeBody = () => {
     return (
         <div className={"container-fluid text-center h-100"}>
             <div className={"row h-100"}>
-                <div className={"col left-part align-content-center"}>
+                <div className={"col-12 col-md-4 left-part align-content-center"}>
                     <img
                         alt={"Goal"}
                         src={objetivos}
@@ -22,13 +22,13 @@ export const HomeBody = () => {
                         Empezar
                     </button>
                 </div>
-                <div className={"col-8 right-part align-content-center"}>
+                <div className={"col-12 col-md-8 right-part align-content-center position-relative"}>
                     <img
                         alt={"Map"}
                         src={map}
-                        className={"img-fluid map"}
+                        className={"img-fluid map-small"}
                     />
-                    <p className={"text-end pe-5 m-3"}>
+                    <p className={"text-end pe-5 m-3 position-absolute bottom-0 end-0"}>
                         Mapa de EO
                     </p>
                 </div>

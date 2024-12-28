@@ -1,15 +1,15 @@
-.left-part{
+.left-part {
     background-color: #EFBC5E;
     min-height: 100%;
 }
 
-.right-part{
+.right-part {
     background-color: #FFA600;
     min-height: 100%;
 }
 
 .map {
-    max-width: 90%;
+    object-fit: cover;
 }
 
 .btn-empezar {
@@ -17,4 +17,12 @@
     color: white;
     font-family: Inter, sans-serif;
     border-color: #FFA600;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .btn-empezar {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
 }

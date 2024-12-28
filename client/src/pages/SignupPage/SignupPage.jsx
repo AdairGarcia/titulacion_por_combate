@@ -6,8 +6,8 @@ import registrarse from '../../assets/Registrarse.png';
 export const SignupPage = () => {
     return(
         <>
-            <div className={"fondo-pantalla vh-100 d-grid justify-content-center align-items-center rounded-5"}>
-                <div className={"contenedor-formulario container p-5"}>
+            <div className={"fondo-pantalla vh-100 d-grid justify-content-center align-items-center"}>
+                <div className={"contenedor-formulario container p-5 rounded-5"}>
                     <div className={"text-center"}>
                         <img
                             alt={"Titulo"}
