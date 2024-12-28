@@ -1,0 +1,54 @@
+.form-title{
+    font-family: Linden Hill, serif;
+    font-size: 2.5rem;
+    max-width: 100%;
+    font-weight: bold;
+}
+
+.btn-agregar {
+    background-color: white;
+    font-family: Inter, sans-serif;
+    border: none;
+    font-weight: bolder;
+}
+
+.btn-descargar {
+    background-color: #D9D9D9;
+    font-family: Inter, sans-serif;
+    border: none;
+    font-weight: bolder;
+}
+
+.btn-eliminar {
+    background-color: #000000;
+    font-family: Inter, sans-serif;
+    border: none;
+    font-weight: bolder;
+    color: white;
+}
+
+.question-container-even{
+    background-color: #D9D9D9;
+}
+.question-container-odd{
+    background-color: #7B7B7B;
+}
+
+.btn-editar{
+    background-color: #FFA600;
+    border: none;
+}
+
+.btn-eliminar-pregunta{
+    background-color: #000000;
+    border: none;
+}
+
+.question-text{
+    font-family: Inter, sans-serif;
+}
+
+.correct-answer{
+    text-decoration: underline;
+    text-decoration-color: green;
+}

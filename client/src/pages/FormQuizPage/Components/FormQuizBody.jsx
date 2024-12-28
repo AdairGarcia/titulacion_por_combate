@@ -8,8 +8,6 @@ import {useState} from "react";
 export const FormQuizBody = () => {
     const [color, setColor] = useState('#000000');
 
-
-
     return(
         <div className={"container-fluid h-100"}>
             <div className={"row h-100"}>

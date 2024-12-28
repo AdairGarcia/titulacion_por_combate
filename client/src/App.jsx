@@ -6,6 +6,7 @@ import {MainPage} from "./pages/MainPage/MainPage.jsx";
 
 import {AuthProvider} from "./context/AuthContext.jsx";
 import {FormQuizPage} from "./pages/FormQuizPage/FormQuizPage.jsx";
+import {FormPage} from "./pages/FormPage/FormPage.jsx";
 
 function App() {
     return(
@@ -19,6 +20,7 @@ function App() {
 
                     <Route path='/forms' element={<MainPage/>}/>
                     <Route path='/forms/quiz' element={<FormQuizPage/>}/>
+                    <Route path='/forms/:id' element={<FormPage/>}/>
 
                 </Routes>
             </BrowserRouter>
