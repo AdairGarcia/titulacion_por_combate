@@ -1,0 +1,26 @@
+.fondo-pantalla-principal {
+    background-color: #FFA600;
+}
+
+.img-formularios {
+    max-width: 50%;
+}
+
+.btn-crear-cuestionario {
+    background-color: #434343;
+    color: white;
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+
+}
+
+.forms-container {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.text-form{
+    color: #000000;
+    font-family: Inter, sans-serif;
+    font-weight: bold;
+}
+
