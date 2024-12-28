@@ -52,3 +52,29 @@
     text-decoration: underline;
     text-decoration-color: green;
 }
+
+.modal-agregar-pregunta{
+    background-color: #999999;
+}
+
+.entrada-formulario-pregunta{
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 1px solid #000000;
+}
+.entrada-formulario-pregunta:focus{
+    background-color: transparent;
+    border-color: transparent;
+    border-bottom: 1px solid #000000
+}
+
+.btn-agregar-pregunta{
+    background-color: #000000;
+    color: #FFA600;
+    font-family: Inter, sans-serif;
+}
+
+.label-formulario-preguntas{
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+}
