@@ -5,6 +5,7 @@ import {SigninPage} from "./pages/SigninPage/SigninPage.jsx";
 import {MainPage} from "./pages/MainPage/MainPage.jsx";
 
 import {AuthProvider} from "./context/AuthContext.jsx";
+import {FormQuizPage} from "./pages/FormQuizPage/FormQuizPage.jsx";
 
 function App() {
     return(
@@ -17,6 +18,7 @@ function App() {
                     <Route path='/signin' element={<SigninPage/>}/>
 
                     <Route path='/forms' element={<MainPage/>}/>
+                    <Route path='/forms/quiz' element={<FormQuizPage/>}/>
 
                 </Routes>
             </BrowserRouter>

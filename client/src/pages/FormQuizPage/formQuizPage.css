@@ -1,0 +1,29 @@
+.crear-cuestionario-img{
+    max-width: 70%;
+}
+
+.texto-color{
+    font-family: Inter, sans-serif;
+}
+
+.nombre-icono{
+    width: 3rem;
+    height: calc(1.5em + 0.75rem + calc(var(--bs-border-width) * 2));
+    padding: 0.5rem;
+}
+
+.btns{
+    width: 45%;
+}
+
+.btn-crear{
+    background-color: #434343;
+    color: white;
+    border: none;
+}
+
+.btn-cancelar{
+    background-color: #FFA600;
+    color: white;
+    border: none;
+}
