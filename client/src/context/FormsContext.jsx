@@ -1,5 +1,5 @@
 import {createContext, useContext, useState} from "react";
-import {createFormsRequest} from "../api/forms.js";
+import {createFormsRequest, getFormsRequest} from "../api/forms.js";
 
 const FormsContext = createContext();
 
@@ -16,6 +16,15 @@ export const useForms = () => {
 export function FormsProvider({children}){
     const [forms, setForms] = useState([]);
 
+    const getForms = async () => {
+        try{
+            const res = await getFormsRequest();
+            setForms(res.data);
+        } catch (error){
+            console.error(error);
+        }
+    }
+
     const createForm = async (form) => {
         const res = await createFormsRequest(form);
         console.log(res);
@@ -24,7 +33,8 @@ export function FormsProvider({children}){
     return(
         <FormsContext.Provider value={{
             forms,
-            createForm
+            createForm,
+            getForms
         }}
         >
             {children}

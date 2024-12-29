@@ -1,13 +1,16 @@
 import '../formQuizPage.css';
 import crearCuestionario from '../../../assets/CrearCuestionario.png';
 import testGame from '../../../assets/TestGame.png';
-import { FaIdCard } from 'react-icons/fa';
-import { useState } from 'react';
-import { useForm } from "react-hook-form";
+import {FaIdCard} from 'react-icons/fa';
+import {useState} from 'react';
+import {useForm} from "react-hook-form";
 import {useForms} from "../../../context/FormsContext.jsx";
+import {useNavigate} from "react-router-dom";
 
 export const FormQuizBody = () => {
     const [color, setColor] = useState('#000000');
+    const navigate = useNavigate();
+
 
     const {register, handleSubmit} = useForm();
     const {createForm} = useForms();
@@ -16,6 +19,10 @@ export const FormQuizBody = () => {
         console.log(data);
         createForm(data);
     });
+
+    const handleCancel = () => {
+        navigate('/forms');
+    }
 
     return (
         <div className="container-fluid h-100">
@@ -67,7 +74,7 @@ export const FormQuizBody = () => {
                             <button className="mb-3 rounded-4 btns btn-crear py-3 w-75 w-md-50">
                                 Crear cuestionario
                             </button>
-                            <button className="mb-3 rounded-4 btns btn-cancelar py-3 w-75 w-md-50">
+                            <button className="mb-3 rounded-4 btns btn-cancelar py-3 w-75 w-md-50" type={"button"} onClick={handleCancel}>
                                 Cancelar
                             </button>
                         </div>
