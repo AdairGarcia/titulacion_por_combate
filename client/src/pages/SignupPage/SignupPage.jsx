@@ -6,7 +6,7 @@ import registrarse from '../../assets/Registrarse.png';
 import {useForm} from 'react-hook-form';
 import {useAuth} from "../../context/AuthContext.jsx";
 import {useEffect} from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export const SignupPage = () => {
     const { register, handleSubmit, formState: {
@@ -87,7 +87,7 @@ export const SignupPage = () => {
                                 <div className={"col"}>
                                     <p className="question">
                                         ¿Ya tienes una cuenta?
-                                        <a href={"/signin"}> Ingresa aquí</a>
+                                        <Link to={"/signin"}>Ingresa aquí</Link>
                                     </p>
                                 </div>
                                 <div className={"col"}>
