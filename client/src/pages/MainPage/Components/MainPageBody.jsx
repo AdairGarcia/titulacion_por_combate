@@ -1,6 +1,6 @@
 import '../mainPage.css';
 import misFormularios from '../../../assets/Mis cuestionarios.png';
-import { Form } from './Form.jsx';
+import {Form} from './Form.jsx';
 
 export const MainPageBody = () => {
     return (

@@ -3,9 +3,19 @@ import crearCuestionario from '../../../assets/CrearCuestionario.png';
 import testGame from '../../../assets/TestGame.png';
 import { FaIdCard } from 'react-icons/fa';
 import { useState } from 'react';
+import { useForm } from "react-hook-form";
+import {useForms} from "../../../context/FormsContext.jsx";
 
 export const FormQuizBody = () => {
     const [color, setColor] = useState('#000000');
+
+    const {register, handleSubmit} = useForm();
+    const {createForm} = useForms();
+
+    const onSubmit = handleSubmit((data) => {
+        console.log(data);
+        createForm(data);
+    });
 
     return (
         <div className="container-fluid h-100">
@@ -16,7 +26,7 @@ export const FormQuizBody = () => {
                         src={crearCuestionario}
                         className="img-fluid pb-4 crear-cuestionario-img m-5"
                     />
-                    <form className="w-100 px-3">
+                    <form className="w-100 px-3" onSubmit={onSubmit}>
                         <div className="mb-3">
                             <label htmlFor="formName" className="form-label label-formulario">Nombre del cuestionario</label>
                             <div className="input-group">
@@ -25,6 +35,8 @@ export const FormQuizBody = () => {
                                     type="text"
                                     className="form-control entrada-formulario rounded-0"
                                     id="formName"
+                                    {...register("title")}
+                                    autoComplete={"off"}
                                 />
                             </div>
                         </div>
@@ -37,6 +49,8 @@ export const FormQuizBody = () => {
                                     className="form-control-color entrada-formulario rounded-0"
                                     id="formColor"
                                     value={color}
+                                    name={"color"}
+                                    {...register("color")}
                                     onChange={(e) => setColor(e.target.value)}
                                 />
                                 <input
@@ -44,6 +58,8 @@ export const FormQuizBody = () => {
                                     className="form-control entrada-formulario rounded-0 texto-color"
                                     value={color.toUpperCase()}
                                     readOnly={true}
+                                     id={"formColorText"}
+
                                 />
                             </div>
                         </div>
