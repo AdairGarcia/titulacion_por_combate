@@ -47,7 +47,7 @@ export const SigninPage = () => {
                                 <div className={"col"}>
                                     <p className="question">
                                         ¿No tienes una cuenta?
-                                        <a href={""}> Ingresa aquí</a>
+                                        <a href={"/signup"}> Ingresa aquí</a>
                                     </p>
                                 </div>
                                 <div className={"col"}>

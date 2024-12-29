@@ -14,6 +14,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [errors, setErrors] = useState([]);
 
     const signup = async (user) => {
         try{
@@ -22,16 +23,17 @@ export const AuthProvider = ({ children }) => {
             setUser(res.data);
             setIsAuthenticated(true);
         } catch (err) {
-            console.log(err);
+            console.error(err.response);
+            setErrors(err.response.data || ['Error al registrar el usuario']);
         }
-
-    }
+    };
 
     return (
         <AuthContext.Provider value ={{
             signup,
             user,
-            isAuthenticated
+            isAuthenticated,
+            errors
         }}>
             {children}
         </AuthContext.Provider>

@@ -2,8 +2,14 @@ import objetivos from '../../../assets/Objetivos.png';
 import descripcion from '../../../assets/Descripción.png';
 import map from '../../../assets/MapaEo.png';
 import '../homePage.css'
+import {useNavigate} from "react-router-dom";
 
 export const HomeBody = () => {
+    const navigate = useNavigate();
+    const handleStartClick = () => {
+        navigate('/signin');
+    };
+
     return (
         <div className={"container-fluid text-center h-100"}>
             <div className={"row h-100"}>
@@ -18,7 +24,7 @@ export const HomeBody = () => {
                         src={descripcion}
                         className={"img-fluid pb-4"}
                     />
-                    <button className={"rounded-3 px-5 py-1 btn-empezar"}>
+                    <button className={"rounded-3 px-5 py-1 btn-empezar"} onClick={handleStartClick}>
                         Empezar
                     </button>
                 </div>

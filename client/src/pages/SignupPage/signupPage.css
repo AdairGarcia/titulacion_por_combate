@@ -41,3 +41,7 @@
     font-family: Inter, sans-serif;
     font-size: 18px
 }
+
+.error{
+    opacity: 70%;
+}

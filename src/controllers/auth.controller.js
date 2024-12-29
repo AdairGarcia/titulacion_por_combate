@@ -4,13 +4,15 @@ import {createAccessToken} from "../libs/jwt.js";
 import {token} from "morgan";
 
 export const signup = async (req, res) => {
-    const {username, email, password} = req.body;
-
+    const {email, password} = req.body;
     try{
+        const userFound = await User.findOne({email})
+        if(userFound){
+            return res.status(400).json(['El correo ya esta registrado'])
+        }
         const passwordHash = await bcrypt.hash(password, 10)
 
         const newUser = new User({
-            username,
             email,
             password: passwordHash,
         });
@@ -21,7 +23,6 @@ export const signup = async (req, res) => {
         res.cookie('token', token)
         res.json({
             id: userSaved._id,
-            username: userSaved.username,
             email: userSaved.email,
             }
         );
