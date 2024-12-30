@@ -9,6 +9,7 @@ import { RiCheckboxMultipleBlankLine } from "react-icons/ri";
 
 export const MainPageBody = () => {
     const {getForms, forms} = useForms();
+    console.log(forms);
 
     useEffect(() => {
         getForms();

@@ -16,8 +16,8 @@ export const FormQuizBody = () => {
     const {createForm} = useForms();
 
     const onSubmit = handleSubmit((data) => {
-        console.log(data);
         createForm(data);
+        navigate('/forms');
     });
 
     const handleCancel = () => {

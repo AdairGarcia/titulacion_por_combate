@@ -4,8 +4,18 @@ import { FaDownload } from 'react-icons/fa6';
 import { MdDelete } from 'react-icons/md';
 import { Question } from './Question.jsx';
 import { CreateQuestionModal } from './CreateQuestionModal.jsx';
+import {useForms} from "../../../context/FormsContext.jsx";
+import {useNavigate} from "react-router-dom";
 
 export const FormBody = ({ form }) => {
+    const {deleteForm} = useForms();
+    const navigate = useNavigate();
+
+    const onDelete = (idForm) => {
+        deleteForm(idForm);
+        navigate('/forms');
+    }
+
     return (
         <>
             <div className="container-fluid h-100 fondo-pantalla-principal">
@@ -27,7 +37,9 @@ export const FormBody = ({ form }) => {
                             <FaDownload size="30px" />
                             Descargar cuestionario
                         </button>
-                        <button className="mx-2 my-2 rounded-4 btn-eliminar p-2">
+                        <button className="mx-2 my-2 rounded-4 btn-eliminar p-2" type={"button"} onClick={
+                            () => onDelete(form._id)
+                        }>
                             <MdDelete size="30px" />
                             Eliminar cuestionario
                         </button>
