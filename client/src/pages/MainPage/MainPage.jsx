@@ -1,5 +1,6 @@
 import {Header} from "../../components/Header/Header.jsx";
 import {MainPageBody} from "./Components/MainPageBody.jsx";
+import {SignoutButton} from "../../components/SignoutButton/SignoutButton.jsx";
 
 export const MainPage = () => {
 
@@ -8,7 +9,7 @@ export const MainPage = () => {
         <>
             <div className={"d-flex flex-column vh-100"}>
                 <div>
-                    <Header/>
+                    <Header optionalComponent={<SignoutButton/>}/>
                 </div>
                 <div className={"flex-grow-1"}>
                     <MainPageBody/>

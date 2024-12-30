@@ -1,5 +1,5 @@
 import {createContext, useContext, useState, useEffect} from "react";
-import {signupRequest, signinRequest, verifiTokenRequest} from "../api/auth.js";
+import {signupRequest, signinRequest, verifiTokenRequest, signoutRequest} from "../api/auth.js";
 import Cookies from 'js-cookie';
 
 export const AuthContext = createContext();
@@ -45,6 +45,18 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const signout = async () => {
+        try {
+            const res = await signoutRequest();
+            console.log(res.data);
+            setUser(null);
+            setIsAuthenticated(false);
+        } catch (err) {
+            console.error(err.response);
+            setErrors([err.response.data.message] || ['Error al cerrar sesión']);
+        }
+    };
+
     useEffect(() => {
         if(errors.length > 0) {
             const timer = setTimeout(() => {
@@ -89,6 +101,7 @@ export const AuthProvider = ({ children }) => {
         <AuthContext.Provider value ={{
             signup,
             signin,
+            signout,
             loading,
             user,
             isAuthenticated,
