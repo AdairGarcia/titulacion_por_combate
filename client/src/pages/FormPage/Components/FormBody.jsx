@@ -1,9 +1,9 @@
 import '../formPage.css';
-import { IoIosAdd } from 'react-icons/io';
-import { FaDownload } from 'react-icons/fa6';
-import { MdDelete } from 'react-icons/md';
-import { Question } from './Question.jsx';
-import { CreateQuestionModal } from './CreateQuestionModal.jsx';
+import {IoIosAdd} from 'react-icons/io';
+import {FaDownload} from 'react-icons/fa6';
+import {MdDelete} from 'react-icons/md';
+import {Question} from './Question.jsx';
+import {CreateQuestionModal} from './CreateQuestionModal.jsx';
 import {useForms} from "../../../context/FormsContext.jsx";
 import {useNavigate} from "react-router-dom";
 import {RiCheckboxMultipleBlankLine} from "react-icons/ri";
@@ -11,8 +11,6 @@ import {RiCheckboxMultipleBlankLine} from "react-icons/ri";
 export const FormBody = ({ form }) => {
     const {deleteForm} = useForms();
     const navigate = useNavigate();
-
-    console.log(form);
 
     const onDelete = (idForm) => {
         deleteForm(idForm);

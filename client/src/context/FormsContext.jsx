@@ -1,6 +1,6 @@
 import {createContext, useContext, useState} from "react";
 import {createFormsRequest, getFormRequest, getFormsRequest, deleteFormsRequest} from "../api/forms.js";
-import {createQuestionRequest, deleteQuestionRequest} from "../api/questions.js";
+import {createQuestionRequest, deleteQuestionRequest, updateQuestionRequest} from "../api/questions.js";
 
 const FormsContext = createContext();
 
@@ -56,6 +56,20 @@ export function FormsProvider({children}){
         }
     };
 
+    const updateQuestion = async (idForm, idQuestion, question) => {
+        try{
+            const res = await updateQuestionRequest(idForm, idQuestion, question);
+            if(res.status === 200){
+                setForm((prevForm) => ({
+                    ...prevForm,
+                    questions: prevForm.questions.map((q) => q._id === idQuestion ? question : q),
+                }));
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     const deleteQuestion = async (idForm, idQuestion) => {
         try{
             const res = await deleteQuestionRequest(idForm, idQuestion);
@@ -79,6 +93,7 @@ export function FormsProvider({children}){
             getForms,
             deleteForm,
             createQuestion,
+            updateQuestion,
             deleteQuestion
         }}
         >
