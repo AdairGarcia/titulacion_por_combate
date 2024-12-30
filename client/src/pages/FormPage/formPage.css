@@ -26,6 +26,14 @@
     color: white;
 }
 
+.btn-editar-cuestionario {
+    background-color: #434343;
+    font-family: Inter, sans-serif;
+    border: none;
+    font-weight: bolder;
+    color: white;
+}
+
 .question-container-even{
     background-color: #D9D9D9;
 }

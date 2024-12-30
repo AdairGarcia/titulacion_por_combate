@@ -1,5 +1,11 @@
 import {createContext, useContext, useState} from "react";
-import {createFormsRequest, getFormRequest, getFormsRequest, deleteFormsRequest} from "../api/forms.js";
+import {
+    createFormsRequest,
+    getFormRequest,
+    getFormsRequest,
+    deleteFormsRequest,
+    updateFormsRequest
+} from "../api/forms.js";
 import {createQuestionRequest, deleteQuestionRequest, updateQuestionRequest} from "../api/questions.js";
 
 const FormsContext = createContext();
@@ -38,6 +44,11 @@ export function FormsProvider({children}){
 
     const createForm = async (form) => {
         const res = await createFormsRequest(form);
+        console.log(res);
+    }
+
+    const updateForm = async (formId, form) => {
+        const res = await updateFormsRequest(formId, form);
         console.log(res);
     }
 
@@ -91,6 +102,7 @@ export function FormsProvider({children}){
             createForm,
             getForm,
             getForms,
+            updateForm,
             deleteForm,
             createQuestion,
             updateQuestion,

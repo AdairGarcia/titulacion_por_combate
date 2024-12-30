@@ -10,6 +10,7 @@ import {FormsProvider} from "./context/FormsContext.jsx";
 import {FormQuizPage} from "./pages/FormQuizPage/FormQuizPage.jsx";
 import {FormPage} from "./pages/FormPage/FormPage.jsx";
 import ProtectedRoute from './pages/ProtectedRoute/ProtectedRoute.jsx'
+import {FormQuizEditPage} from "./pages/FormQuizEditPage/FormQuizEditPage.jsx";
 
 function App() {
     return(
@@ -23,9 +24,10 @@ function App() {
                         <Route path='/signin' element={<SigninPage/>}/>
 
                         <Route element={<ProtectedRoute/>}>
-                                <Route path='/forms' element={<MainPage/>}/>
-                                <Route path='/forms/quiz' element={<FormQuizPage/>}/>
-                                <Route path='/forms/:id' element={<FormPage/>}/>
+                            <Route path='/forms' element={<MainPage/>}/>
+                            <Route path='/forms/quiz' element={<FormQuizPage/>}/>
+                            <Route path='/forms/quiz/:id' element={<FormQuizEditPage/>}/>
+                            <Route path='/forms/:id' element={<FormPage/>}/>
                         </Route>
                     </Routes>
                 </BrowserRouter>

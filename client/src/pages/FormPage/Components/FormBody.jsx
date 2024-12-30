@@ -5,8 +5,9 @@ import {MdDelete} from 'react-icons/md';
 import {Question} from './Question.jsx';
 import {CreateQuestionModal} from './CreateQuestionModal.jsx';
 import {useForms} from "../../../context/FormsContext.jsx";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {RiCheckboxMultipleBlankLine} from "react-icons/ri";
+import {CiEdit} from "react-icons/ci";
 
 export const FormBody = ({ form }) => {
     const {deleteForm} = useForms();
@@ -31,17 +32,23 @@ export const FormBody = ({ form }) => {
                             data-bs-toggle="modal"
                             data-bs-target="#createQM"
                         >
-                            <IoIosAdd size="35px" />
+                            <IoIosAdd size="35px"/>
                             Agregar pregunta
                         </button>
                         <button className="mx-2 my-2 rounded-4 btn-descargar p-3">
-                            <FaDownload size="30px" />
+                            <FaDownload size="30px"/>
                             Descargar cuestionario
                         </button>
+                        <Link to={`/forms/quiz/${form._id}`}>
+                            <button className="mx-2 my-2 rounded-4 btn-editar-cuestionario p-3">
+                                <CiEdit size="30px"/>
+                                Editar cuestionario
+                            </button>
+                        </Link>
                         <button className="mx-2 my-2 rounded-4 btn-eliminar p-2" type={"button"} onClick={
                             () => onDelete(form._id)
                         }>
-                            <MdDelete size="30px" />
+                            <MdDelete size="30px"/>
                             Eliminar cuestionario
                         </button>
                     </div>
