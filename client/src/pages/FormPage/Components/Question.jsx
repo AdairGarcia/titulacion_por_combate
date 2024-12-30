@@ -1,11 +1,18 @@
 import '../formPage.css'
 import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
+import {useForms} from "../../../context/FormsContext.jsx";
 
 
 export const Question = ({question, index}) => {
+    const {form, deleteQuestion} = useForms();
+
     const isEven = index % 2 === 0;
     const containerClass = isEven ? "question-container-even" : "question-container-odd";
+
+    const onDelete = (idForm, idQuestion) => {
+        deleteQuestion(idForm, idQuestion);
+    }
 
     return(
         <div className={`container text-center py-4 ${containerClass}`}>
@@ -34,7 +41,9 @@ export const Question = ({question, index}) => {
                     <button className={"rounded-5 btn-editar mx-3"}>
                         <CiEdit size={"25px"}/>
                     </button>
-                    <button className={"rounded-5 btn-eliminar-pregunta mx-3"}>
+                    <button className={"rounded-5 btn-eliminar-pregunta mx-3"} type={"button"}
+                    onClick={() => onDelete(form._id, question._id)}
+                    >
                         <MdDelete color={"#FFFFFF"} size={"25px"}/>
                     </button>
                 </div>

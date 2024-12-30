@@ -23,7 +23,6 @@ export const FormPage = () => {
 
         )
     }
-
     return(
         <>
             <div className={"d-flex flex-column vh-100"}>

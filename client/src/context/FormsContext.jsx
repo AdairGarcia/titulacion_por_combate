@@ -1,5 +1,6 @@
 import {createContext, useContext, useState} from "react";
 import {createFormsRequest, getFormRequest, getFormsRequest, deleteFormsRequest} from "../api/forms.js";
+import {createQuestionRequest, deleteQuestionRequest} from "../api/questions.js";
 
 const FormsContext = createContext();
 
@@ -45,6 +46,30 @@ export function FormsProvider({children}){
         console.log(res);
     }
 
+    const createQuestion = async (idForm, question) => {
+        try {
+            const res = await createQuestionRequest(idForm, question);
+            await getForm(idForm);
+            console.log(res);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const deleteQuestion = async (idForm, idQuestion) => {
+        try{
+            const res = await deleteQuestionRequest(idForm, idQuestion);
+            if(res.status === 204){
+                setForm((prevForm) => ({
+                    ...prevForm,
+                    questions: prevForm.questions.filter((question) => question._id !== idQuestion),
+                }));
+            }
+        } catch (err){
+            console.error(err);
+        }
+    }
+
     return(
         <FormsContext.Provider value={{
             form,
@@ -52,7 +77,9 @@ export function FormsProvider({children}){
             createForm,
             getForm,
             getForms,
-            deleteForm
+            deleteForm,
+            createQuestion,
+            deleteQuestion
         }}
         >
             {children}
