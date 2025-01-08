@@ -4,6 +4,9 @@ import {createAccessToken} from "../libs/jwt.js";
 import {token} from "morgan";
 import jwt from "jsonwebtoken";
 import {TOKEN_SECRET} from "../config.js";
+import { get } from 'mongoose';
+
+import { getTemplate, sendEmail } from "../libs/mail.js";
 
 export const signup = async (req, res) => {
     const {email, password} = req.body;
@@ -18,16 +21,23 @@ export const signup = async (req, res) => {
             email,
             password: passwordHash,
         });
+
         const userSaved = await newUser.save();
         const token = await createAccessToken({
             id: userSaved._id
         })
+        
+        const Template = await getTemplate(email, token);
+
+        await sendEmail(email, 'Verifica tu correo', Template);
+
         res.cookie('token', token)
         res.json({
             id: userSaved._id,
             email: userSaved.email,
             }
         );
+        
     }catch (error){
         console.error('Hubo un error al registrar el usuario', error);
         res.status(500).json({message: 'Error al registrar el usuario: ' + error.message});
