@@ -39,7 +39,8 @@ export const getTemplate = (name, token) => {
     <div id="email_content">
         <h1>Hola ${name}</h1>
         <p>Para verificar tu cuenta, haz click en el siguiente enlace:</p>
-        <a href="http://localhost:5173/api/">Verificar cuenta</a>
+        <a href="http://localhost:5173/api/confirm/${ token }"
+        target="_blank">Verificar cuenta</a>
     </div>
     `
 }

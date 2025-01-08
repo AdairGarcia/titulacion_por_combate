@@ -1,5 +1,5 @@
 import {Router} from "express";
-import {signin, signout, signup, verifyToken} from "../controllers/auth.controller.js";
+import {signin, signout, signup, verifyToken, verificar_correo} from "../controllers/auth.controller.js";
 import {validateSchema} from "../middlewares/validater.middleware.js";
 import {signInSchema, signUpSchema} from "../schemas/auth.schema.js";
 
@@ -9,6 +9,7 @@ router.post('/signup', validateSchema(signUpSchema), signup);
 router.post('/signin', validateSchema(signInSchema), signin);
 router.post('/signout', signout);
 router.get('/verify', verifyToken);
+router.get('/confirm/:token', verificar_correo);
 
 
 export default router;

@@ -43,12 +43,44 @@ export const signup = async (req, res) => {
         res.status(500).json({message: 'Error al registrar el usuario: ' + error.message});
     }
 };
+export const verificar_correo = async (req, res) => {
+    try{
+        const { token }= req.params;
+        const data = await getTokenData(token);
+
+        if(!data) return res.status(400).json({
+            verified: false,
+            message: 'Token invalid'
+        });
+        console.log(data);
+        const { id } = data.data;
+
+        const user = await User.findOne({ id }) || null;
+        console.log(user);
+
+        if (!user) {
+            return res.status(400).json({
+            verified: false,
+            message: 'Usuario no encontrado'
+        })}else{
+            user.verified = true;
+            await user.save();
+
+            return res.redirect('http://localhost:5173/');
+        }
+
+    }catch (error){
+        console.error('Hubo un error al confirmar el usuario', error);
+        res.status(500).json({message: 'Error al confirmar usuario: ' + error.message});
+    }
+};
 export const signin = async (req, res) => {
     const {email, password} = req.body;
 
     try{
         const userFound = await User.findOne({email})
         if(!userFound) return res.status(400).json({message: 'Usuario no encontrado'})
+        if(!userFound.verified) return res.status(400).json({message: 'Usuario no verificado'})
 
         const isMatch = await bcrypt.compare(password, userFound.password)
         if(!isMatch) return res.status(400).json({message: 'Credenciales invalidas'})

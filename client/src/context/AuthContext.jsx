@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
             const res = await signupRequest(user);
             console.log(res.data);
             setUser(res.data);
-            setIsAuthenticated(true);
+            setIsAuthenticated(false);
         } catch (err) {
             console.error(err.response);
             setErrors(err.response.data || ['Error al registrar el usuario']);
