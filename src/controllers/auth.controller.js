@@ -43,37 +43,6 @@ export const signup = async (req, res) => {
         res.status(500).json({message: 'Error al registrar el usuario: ' + error.message});
     }
 };
-export const verificar_correo = async (req, res) => {
-    try{
-        const { token }= req.params;
-        const data = await getTokenData(token);
-
-        if(!data) return res.status(400).json({
-            verified: false,
-            message: 'Token invalid'
-        });
-        console.log(data);
-        const { id } = data.data;
-
-        const user = await User.findOne({ id }) || null;
-        console.log(user);
-
-        if (!user) {
-            return res.status(400).json({
-            verified: false,
-            message: 'Usuario no encontrado'
-        })}else{
-            user.verified = true;
-            await user.save();
-
-            return res.redirect('http://localhost:5173/');
-        }
-
-    }catch (error){
-        console.error('Hubo un error al confirmar el usuario', error);
-        res.status(500).json({message: 'Error al confirmar usuario: ' + error.message});
-    }
-};
 export const signin = async (req, res) => {
     const {email, password} = req.body;
 
@@ -100,13 +69,44 @@ export const signin = async (req, res) => {
         res.status(500).json({message: 'Error al iniciar sesion: ' + error.message});
     }
 };
+export const confirm = async (req, res) => {
+    console.log("entro a verificar correo");
+    try{
+        const { token }= req.params;
+        const data = await getTokenData(token);
+
+        if(!data) return res.status(400).json({
+            verified: false,
+            message: 'Token invalid'
+        });
+        console.log(data);
+        const { id } = data.data;
+
+        const user = await User.findOne({ id }) || null;
+        console.log(user);
+
+        if (!user) {
+            return res.status(400).json({
+            verified: false,
+            message: 'Usuario no encontrado'
+        })}else{
+            user.verified = true;
+            await user.save();
+
+            return res.redirect('http://localhost:5173/signin');
+        }
+
+    }catch (error){
+        console.error('Hubo un error al confirmar el usuario', error);
+        res.status(500).json({message: 'Error al confirmar usuario: ' + error.message});
+    }
+};
 export const signout = async (req, res) => {
     res.cookie('token', '', {
         expires: new Date(0)
     })
     return res.sendStatus(200)
 };
-
 export const verifyToken = async (req, res) => {
     const {token} = req.cookies;
     if(!token) return res.status(401).json({message: 'No autorizado'})
@@ -122,3 +122,12 @@ export const verifyToken = async (req, res) => {
         })
     })
 }
+export const getTokenData = (token) => {
+    try {
+        const data = jwt.verify(token, TOKEN_SECRET);
+        return data;
+    } catch (error) {
+        console.error("Error verifying token:", error.message);
+        return null;
+    }
+};

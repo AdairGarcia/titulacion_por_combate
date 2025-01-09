@@ -1,5 +1,5 @@
 import {createContext, useContext, useState, useEffect} from "react";
-import {signupRequest, signinRequest, verifiTokenRequest, signoutRequest} from "../api/auth.js";
+import {signupRequest, signinRequest, verifiTokenRequest, signoutRequest, confirmEmailRequest} from "../api/auth.js";
 import Cookies from 'js-cookie';
 
 export const AuthContext = createContext();
@@ -45,6 +45,18 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const confirmEmail = async (token) => {
+        try {
+            const res = await confirmEmailRequest(token);
+            console.log(res.data);
+            setUser(res.data);
+            setIsAuthenticated(true);
+        } catch (err) {
+            console.error(err.response);
+            setErrors([err.response.data.message] || ['Error al confirmar correo']);
+        }
+    }
+
     const signout = async () => {
         try {
             const res = await signoutRequest();
@@ -75,6 +87,7 @@ export const AuthProvider = ({ children }) => {
                 return setUser(null);
             }
             try {
+                console.log("verificando token");
                 const res =  await verifiTokenRequest(cookies.token);
                 if(!res.data) {
                     setIsAuthenticated(false);
@@ -102,6 +115,7 @@ export const AuthProvider = ({ children }) => {
             signup,
             signin,
             signout,
+            confirmEmail,
             loading,
             user,
             isAuthenticated,
