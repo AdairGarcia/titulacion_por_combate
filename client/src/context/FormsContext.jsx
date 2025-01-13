@@ -57,6 +57,25 @@ export function FormsProvider({children}){
         console.log(res);
     }
 
+    const downloadForm = async (formId) => {
+        const res = await getFormRequest(formId);
+        console.log(res);
+    
+        const formName = res.data.title; // Asegúrate de que el nombre del formulario esté en res.data.name
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(res.data));
+        const blob = new Blob([JSON.stringify(res.data)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+    
+        const downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute("href", url);
+        downloadAnchorNode.setAttribute("download", `TPC_F_${formName}.json`);
+        document.body.appendChild(downloadAnchorNode);
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+    
+        URL.revokeObjectURL(url);
+    }
+
     const createQuestion = async (idForm, question) => {
         try {
             const res = await createQuestionRequest(idForm, question);
@@ -104,6 +123,7 @@ export function FormsProvider({children}){
             getForms,
             updateForm,
             deleteForm,
+            downloadForm,
             createQuestion,
             updateQuestion,
             deleteQuestion

@@ -10,12 +10,17 @@ import {RiCheckboxMultipleBlankLine} from "react-icons/ri";
 import {CiEdit} from "react-icons/ci";
 
 export const FormBody = ({ form }) => {
-    const {deleteForm} = useForms();
+    const {deleteForm, downloadForm} = useForms();
     const navigate = useNavigate();
 
     const onDelete = (idForm) => {
         deleteForm(idForm);
         navigate('/forms');
+    }
+
+    const onDownload = (idForm) => {
+        console.log('Descargando cuestionario');
+        downloadForm(idForm);
     }
 
     return (
@@ -35,7 +40,9 @@ export const FormBody = ({ form }) => {
                             <IoIosAdd size="35px"/>
                             Agregar pregunta
                         </button>
-                        <button className="mx-2 my-2 rounded-4 btn-descargar p-3">
+                        <button className="mx-2 my-2 rounded-4 btn-descargar p-3" onClick={
+                            () => onDownload(form._id)
+                        }>
                             <FaDownload size="30px"/>
                             Descargar cuestionario
                         </button>
