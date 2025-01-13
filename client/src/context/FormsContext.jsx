@@ -61,14 +61,26 @@ export function FormsProvider({children}){
         const res = await getFormRequest(formId);
         console.log(res);
     
-        const formName = res.data.title; // Asegúrate de que el nombre del formulario esté en res.data.name
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(res.data));
-        const blob = new Blob([JSON.stringify(res.data)], { type: 'application/json' });
+        const formName = res.data.title; // Asegúrate de que el nombre del formulario esté en res.data.title
+        const questions = res.data.questions;
+    
+        // Transformar los datos en el formato deseado
+        let formattedData = '';
+        questions.forEach((question, index) => {
+            formattedData += `q${index + 1}-${question.questionText}\n`;
+            formattedData += `act-${question.correctAnswer}\n`;
+            question.incorrectAnswers.forEach((answer, i) => {
+                formattedData += `a${i + 1}-${answer}\n`;
+            });
+            formattedData += '\n';
+        });
+    
+        const blob = new Blob([formattedData], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
     
         const downloadAnchorNode = document.createElement('a');
         downloadAnchorNode.setAttribute("href", url);
-        downloadAnchorNode.setAttribute("download", `TPC_F_${formName}.json`);
+        downloadAnchorNode.setAttribute("download", `TPC_F_${formName}.txt`);
         document.body.appendChild(downloadAnchorNode);
         downloadAnchorNode.click();
         downloadAnchorNode.remove();
